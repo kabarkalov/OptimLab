@@ -1,0 +1,443 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PlotComponentsGDI</name>
+    </assembly>
+    <members>
+        <member name="T:PlotComponentsGDI.PlotBuilder">
+            <summary>
+            Компонент для построения графиков.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.plots">
+            <summary>
+            Словарь графиков.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.constraints">
+            <summary>
+            Словарь ограничений.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.minX">
+            <summary>
+            Наименьшее значение абсциссы.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.maxX">
+            <summary>
+            Наибольшее значение абсциссы.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.minY">
+            <summary>
+            Наименьшее значение ординаты.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.maxY">
+            <summary>
+            Наибольшее значение ординаты.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.nConstraint">
+            <summary>
+            Размер текстуры ограничения.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.axisX">
+            <summary>
+            Абсцисса оси ординат.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.axisY">
+            <summary>
+            Ордината оси абсцисс.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.showAxises">
+            <summary>
+            Закрытое хранилище флага отображения осей координат.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.showGrid">
+            <summary>
+            Закрытое хранилище флага отображения координатной сетки.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.showNumbers">
+            <summary>
+            Закрытое хранилище флага отображения делений на осях координат.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.showPicture">
+            <summary>
+            Закрытое хранилище флага отображения рисунка.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.pictureLocation">
+            <summary>
+            Закрытое хранилище координат рисунка.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.constraintColor">
+            <summary>
+            Закрытое хранилище цвета ограничений.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.axisesColor">
+            <summary>
+            Закрытое хранилище цвета осей координат.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.#ctor">
+            <summary>
+            Конструктор по умолчанию.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.CalculateLimits">
+            <summary>
+            Вычисление пределов изменения координат.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.CalculateAxises">
+            <summary>
+            Вычисление абсциссы и ординаты осей координат.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.AddPlot(PlotComponentsGDI.Plot)">
+            <summary>
+            Добавление графика.
+            </summary>
+            <param name="plot">График.</param>
+            <remarks>Перед добавлением графика необходимо присвоить ему название,
+            которое не изменять впоследствии.</remarks>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.IsExistingPlot(System.String)">
+            <summary>
+            Проверка существования графика.
+            </summary>
+            <param name="plotName">Название графика.</param>
+            <returns>True, если график существует; False, если не существует.</returns>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.RemovePlot(System.String)">
+            <summary>
+            Удаление графика.
+            </summary>
+            <param name="plotName">Название графика.</param>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.RemoveAllPlots">
+            <summary>
+            Удаление всех графиков.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.ShowPlot(System.String)">
+            <summary>
+            Отображение графика.
+            </summary>
+            <param name="plotName">Название графика.</param>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.HidePlot(System.String)">
+            <summary>
+            Скрытие графика.
+            </summary>
+            <param name="plotName">Название графика.</param>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.AddConstraint(System.String,PlotComponentsGDI.SurfaceDelegate)">
+            <summary>
+            Добавление ограничения.
+            </summary>
+            <param name="constraintName">Название ограничения.</param>
+            <param name="constraintFunction">Функция-ограничение.</param>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.AddConstraint(System.String,PlotComponentsGDI.SurfaceDelegate,System.Drawing.Bitmap)">
+            <summary>
+            Добавление ограничения с предварительно сгенерированной текстурой.
+            </summary>
+            <param name="constraintName">Название ограничения.</param>
+            <param name="constraintFunction">Функция-ограничение.</param>
+            <param name="constraintTexture">Текстура ограничения.</param>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.RemoveConstraint(System.String)">
+            <summary>
+            Удаление ограничения.
+            </summary>
+            <param name="constraintName">Название ограничения.</param>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.RemoveAllConstraints">
+            <summary>
+            Удаление всех ограничений.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.DrawAxises(System.Drawing.Graphics)">
+            <summary>
+            Рисование осей координат.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.DrawGrid(System.Drawing.Graphics)">
+            <summary>
+            Рисование координатной сетки.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.FormatNumber(System.Single)">
+            <summary>
+            Форматирование текста деления на оси координат.
+            </summary>
+            <param name="value">Значение деления.</param>
+            <returns>Текст деления.</returns>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.DrawNumbers(System.Drawing.Graphics)">
+            <summary>
+            Рисование делений на осях координат.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotBuilder.components">
+            <summary>
+            Необходимая переменная для проектировщика компонентов.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.Dispose(System.Boolean)">
+            <summary>
+            Освобождение используемых ресурсов.
+            </summary>
+            <param name="disposing">True, если управляемые ресурсы должны быть освобождены;
+            в противном случае False.</param>
+        </member>
+        <member name="M:PlotComponentsGDI.PlotBuilder.InitializeComponent">
+            <summary>
+            Необходимый метод для поддержки проектировщика компонентов -
+            не изменяйте его содержимое с помощью редактора кода.
+            </summary>
+        </member>
+        <member name="P:PlotComponentsGDI.PlotBuilder.ShowAxises">
+            <summary>
+            Флаг отображения осей координат.
+            </summary>
+        </member>
+        <member name="P:PlotComponentsGDI.PlotBuilder.ShowGrid">
+            <summary>
+            Флаг отображения координатной сетки.
+            </summary>
+        </member>
+        <member name="P:PlotComponentsGDI.PlotBuilder.ShowNumbers">
+            <summary>
+            Флаг отображения делений на осях координат.
+            </summary>
+        </member>
+        <member name="P:PlotComponentsGDI.PlotBuilder.ShowPicture">
+            <summary>
+            Флаг отображения рисунка.
+            </summary>
+        </member>
+        <member name="P:PlotComponentsGDI.PlotBuilder.PictureLocation">
+            <summary>
+            Координаты рисунка.
+            </summary>
+        </member>
+        <member name="P:PlotComponentsGDI.PlotBuilder.ConstraintColor">
+            <summary>
+            Цвет ограничений.
+            </summary>
+        </member>
+        <member name="P:PlotComponentsGDI.PlotBuilder.AxisesColor">
+            <summary>
+            Цвет осей координат.
+            </summary>
+        </member>
+        <member name="P:PlotComponentsGDI.PlotBuilder.Item(System.String)">
+            <summary>
+            Индексатор графиков.
+            </summary>
+            <param name="plotName">Название графика.</param>
+            <returns>График.</returns>
+        </member>
+        <member name="T:PlotComponentsGDI.CurveDelegate">
+            <summary>
+            Функция кривой.
+            </summary>
+            <param name="x">Абсцисса.</param>
+            <returns>Ордината.</returns>
+        </member>
+        <member name="T:PlotComponentsGDI.SurfaceDelegate">
+            <summary>
+            Функция поверхности.
+            </summary>
+            <param name="x">Абсцисса.</param>
+            <param name="y">Ордината.</param>
+            <returns>Аппликата.</returns>
+        </member>
+        <member name="T:PlotComponentsGDI.Triangulator">
+            <summary>
+            Триангулятор математических объектов.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.Triangulator.PointsVertexArray(System.Drawing.PointF[])">
+            <summary>
+            Триангуляция массива вершин точек.
+            </summary>
+            <param name="vertices">Вершины точек.</param>
+            <returns>График точек.</returns>
+        </member>
+        <member name="M:PlotComponentsGDI.Triangulator.CurveVertexArray(System.Drawing.PointF[])">
+            <summary>
+            Триангуляция массива вершин кривой (несвязанные отрезки).
+            </summary>
+            <param name="vertices">Вершины кривой.</param>
+            <returns>График кривой.</returns>
+        </member>
+        <member name="M:PlotComponentsGDI.Triangulator.CurveStripVertexArray(System.Drawing.PointF[])">
+            <summary>
+            Триангуляция массива вершин кривой (связанные отрезки).
+            </summary>
+            <param name="vertices">Вершины кривой.</param>
+            <returns>График кривой.</returns>
+        </member>
+        <member name="M:PlotComponentsGDI.Triangulator.CurveValueArray(System.Double[],System.Double,System.Double)">
+            <summary>
+            Триангуляция массива значений кривой.
+            </summary>
+            <param name="values">Значения кривой.</param>
+            <param name="minX">Наименьшее значение абсциссы.</param>
+            <param name="maxX">Наибольшее значение абсциссы.</param>
+            <returns>График кривой.</returns>
+        </member>
+        <member name="M:PlotComponentsGDI.Triangulator.CurveFunction(PlotComponentsGDI.CurveDelegate,System.Double,System.Double,System.Int32)">
+            <summary>
+            Триангуляция кривой, заданной функцией.
+            </summary>
+            <param name="function">Функция кривой.</param>
+            <param name="minX">Наименьшее значение абсциссы.</param>
+            <param name="maxX">Наибольшее значение абсциссы.</param>
+            <param name="nX">Количество разбиений по абсциссе.</param>
+            <returns>График кривой.</returns>
+        </member>
+        <member name="M:PlotComponentsGDI.Triangulator.BuildVertexListCurveImplicit(PlotComponentsGDI.SurfaceDelegate,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Построение вершин неявной кривой.
+            </summary>
+            <param name="function">Функция неявной кривой.</param>
+            <param name="minX">Наименьшее значение абсциссы.</param>
+            <param name="maxX">Наибольшее значение абсциссы.</param>
+            <param name="minY">Наименьшее значение ординаты.</param>
+            <param name="maxY">Наибольшее значение ординаты.</param>
+            <param name="nX">Количество разбиений по абсциссе.</param>
+            <param name="nY">Количество разбиений по ординате.</param>
+            <returns>Вершины кривой.</returns>
+        </member>
+        <member name="M:PlotComponentsGDI.Triangulator.CurveImplicit(PlotComponentsGDI.SurfaceDelegate,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Триангуляция неявной кривой, заданной функцией.
+            </summary>
+            <param name="function">Функция неявной кривой.</param>
+            <param name="minX">Наименьшее значение абсциссы.</param>
+            <param name="maxX">Наибольшее значение абсциссы.</param>
+            <param name="minY">Наименьшее значение ординаты.</param>
+            <param name="maxY">Наибольшее значение ординаты.</param>
+            <param name="nX">Количество разбиений по абсциссе.</param>
+            <param name="nY">Количество разбиений по ординате.</param>
+            <returns>График кривой.</returns>
+        </member>
+        <member name="M:PlotComponentsGDI.Triangulator.SurfaceLevelLines(PlotComponentsGDI.SurfaceDelegate,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Триангуляция линий уровня поверхности, заданной функцией.
+            </summary>
+            <param name="function">Функция поверхности.</param>
+            <param name="minX">Наименьшее значение абсциссы.</param>
+            <param name="maxX">Наибольшее значение абсциссы.</param>
+            <param name="minY">Наименьшее значение ординаты.</param>
+            <param name="maxY">Наибольшее значение ординаты.</param>
+            <param name="nX">Количество разбиений по абсциссе.</param>
+            <param name="nY">Количество разбиений по ординате.</param>
+            <param name="nLines">Количество линий уровня.</param>
+            <returns>График линий.</returns>
+        </member>
+        <member name="T:PlotComponentsGDI.PlotInfo">
+            <summary>
+            Информация о графике.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotInfo.Name">
+            <summary>
+            Название.
+            </summary>
+            <remarks>Перед добавлением графика необходимо присвоить ему название,
+            которое не изменять впоследствии.</remarks>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotInfo.Formulas">
+            <summary>
+            Формулы.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotInfo.Notes">
+            <summary>
+            Дополнительные сведения.
+            </summary>
+        </member>
+        <member name="T:PlotComponentsGDI.Plot">
+            <summary>
+            График.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.Plot.VerticesPoints">
+            <summary>
+            Вершины точек.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.Plot.VerticesLines">
+            <summary>
+            Вершины линий.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.Plot.IsVisible">
+            <summary>
+            Флаг видимости графика.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.Plot.color">
+            <summary>
+            Закрытое хранилище цвета передних граней примитивов.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.Plot.pointSize">
+            <summary>
+            Закрытое хранилище размера точек.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.Plot.Information">
+            <summary>
+            Информация о графике.
+            </summary>
+        </member>
+        <member name="M:PlotComponentsGDI.Plot.#ctor(System.Drawing.PointF[],System.Drawing.PointF[])">
+            <summary>
+            Конструктор по массивам вершин примитивов.
+            </summary>
+            <param name="verticesPoints">Вершины точек.</param>
+            <param name="verticesLines">Вершины линий.</param>
+        </member>
+        <member name="P:PlotComponentsGDI.Plot.Color">
+            <summary>
+            Цвет передних граней примитивов.
+            </summary>
+        </member>
+        <member name="P:PlotComponentsGDI.Plot.PointSize">
+            <summary>
+            Размер точек.
+            </summary>
+        </member>
+        <member name="T:PlotComponentsGDI.PlotConstraint">
+            <summary>
+            Ограничение.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotConstraint.Function">
+            <summary>
+            Функция.
+            </summary>
+        </member>
+        <member name="F:PlotComponentsGDI.PlotConstraint.Texture">
+            <summary>
+            Текстура.
+            </summary>
+        </member>
+    </members>
+</doc>
