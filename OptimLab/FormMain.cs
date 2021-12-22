@@ -476,6 +476,7 @@ namespace OptimLab
             }
 
             method = (Method)Activator.CreateInstance(methods[currentMethodName]);
+            /*
             if (currentMethodName == "ModReductionMethod")
             {
                 problem.TargetFunction = delegate(double[] args)
@@ -504,6 +505,11 @@ namespace OptimLab
                 ResetControls();
                 plotBuilder.ShowPicture = true;
             }
+*/
+            ResetControls();
+            plotBuilder.ShowPicture = true;
+
+
             method.SetProblem(problem);
             method.SetOptions(methodOptions);
             method.IsOperationProperty = false;
